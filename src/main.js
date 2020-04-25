@@ -7,6 +7,11 @@ import './static/iconfont/iconfont.css'
 import 'swiper/css/swiper.css'
 import VueVideoPlayer from 'vue-video-player'
 import 'video.js/dist/video-js.css'
+import axios from 'axios'
+
+Vue.prototype.$axios = axios
+axios.defaults.baseURL = "/api"
+
 Vue.use(VueVideoPlayer)
 Vue.use(VueAwesomeSwiper)
 Vue.config.productionTip = false

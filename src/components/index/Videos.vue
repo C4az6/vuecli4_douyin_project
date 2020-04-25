@@ -13,7 +13,7 @@
 import { videoPlayer } from "vue-video-player";
 export default {
   name: "videos",
-  props: ['videoList'],
+  props: ["videoList"],
   data() {
     return {
       playerOptions: {
@@ -25,8 +25,8 @@ export default {
         fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
         sources: [
           {
-            src: this.videoList.url, // 路径
-            type: "video/mp4" // 类型 
+            src: this.videoList.VideoUrl, // 路径
+            type: "video/mp4" // 类型
           }
         ],
         //poster: "../../static/images/test.jpg", //你的封面地址
@@ -38,6 +38,9 @@ export default {
   },
   components: {
     videoPlayer
+  },
+  mounted(){
+    console.log(this.videoList)
   }
 };
 </script>
