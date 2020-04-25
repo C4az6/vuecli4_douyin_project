@@ -40,7 +40,6 @@ export default {
     videoPlayer
   },
   mounted(){
-    console.log(this.videoList)
   }
 };
 </script>
