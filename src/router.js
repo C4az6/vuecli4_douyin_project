@@ -7,8 +7,20 @@ const router = new VueRouter({
   routes: [
     {
       path: "/",
-      name: Home,
-      component: Home
+      name: 'home',
+      component: Home,
+      children: [
+        {
+          path: '/index',
+          name: 'index',
+          component: ()=>import('./views/index/Index.vue')
+        },
+        {
+          path: '/follow',
+          name: 'follow',
+          component: ()=>import('./views/follow/Follow.vue')
+        }
+      ]
     }
   ]
 })

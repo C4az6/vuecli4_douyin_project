@@ -1,26 +1,22 @@
 <template>
   <div class="home">
-    <!-- <router-view></router-view> -->
-    Home
+    <router-view></router-view>
     <tab-bar></tab-bar>
   </div>
 </template>
 
 <script>
-import TabBar from '../components/home/TabBar'
+import TabBar from "../components/home/TabBar";
 export default {
   name: "home",
-  data(){
-    return {
-
-    }
+  data() {
+    return {};
   },
   components: {
     TabBar
   }
-}
+};
 </script>
 
 <style lang="less">
-  
 </style>

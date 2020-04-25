@@ -1,21 +1,21 @@
 <template>
   <div class="tabbar-wrap">
     <div class="item" @click="TabIndexChange(0)">
-      <span :class="tabIndex==0?'active':''">首页</span>
+      <router-link to="/index" :class="tabIndex==0?'active':''">首页</router-link>
     </div>
     <div class="item" @click="TabIndexChange(1)">
-      <span :class="tabIndex==1?'active':''">熟人</span>
+      <router-link to="/follow" :class="tabIndex==1?'active':''">熟人</router-link>
     </div>
     <div class="item" @click="TabIndexChange(2)">
-      <span :class="tabIndex==2?'active':''">
-        <img src="../../static/imgs/add.png" alt="">
-      </span>
+      <router-link to="/index" :class="tabIndex==2?'active':''">
+        <img src="../../static/imgs/add.png" alt />
+      </router-link>
     </div>
     <div class="item" @click="TabIndexChange(3)">
-      <span :class="tabIndex==3?'active':''">消息</span>
+      <router-link to="/index" :class="tabIndex==3?'active':''">消息</router-link>
     </div>
     <div class="item" @click="TabIndexChange(4)">
-      <span :class="tabIndex==4?'active':''">我</span>
+      <router-link to="/index" :class="tabIndex==4?'active':''">我</router-link>
     </div>
   </div>
 </template>
@@ -36,6 +36,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+a {
+  color: #ccc;
+  text-decoration: none;
+}
 .tabbar-wrap {
   position: fixed;
   background-color: #000;
@@ -55,7 +59,7 @@ export default {
     img {
       width: 40px;
       height: 40px;
-      padding-top: 10px;
+      margin-top: 10px;
     }
   }
 }
