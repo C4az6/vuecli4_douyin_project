@@ -44,6 +44,7 @@ a {
   position: fixed;
   background-color: #000;
   bottom: 0;
+  z-index: 99;
   width: 100%;
   height: 60px;
   line-height: 60px;

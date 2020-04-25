@@ -1,6 +1,7 @@
 <template>
   <div class="index-wrap">
     <top-bar></top-bar>
+    <router-view />
   </div>
 </template>
 

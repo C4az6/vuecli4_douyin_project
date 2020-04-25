@@ -2,26 +2,34 @@
   <div class="topbar-wrap">
     <div class="left">
       <span class="iconfont icon-live"></span>
-      </div>
-    <div class="middle">
-      <div class="item" @click="tabIndexChange(0)" ><span :class="tabIndex==0?'active':''">同城</span></div>
-      <div class="item" @click="tabIndexChange(1)" ><span :class="tabIndex==1?'active':''">关注</span></div>
-      <div class="item" @click="tabIndexChange(2)" ><span :class="tabIndex==2?'active':''">推荐</span></div>
     </div>
-    <div class="right"><span class="iconfont icon-search"></span></div>
+    <div class="middle">
+      <div class="item" @click="tabIndexChange(0)">
+        <span :class="tabIndex==0?'active':''">同城</span>
+      </div>
+      <div class="item" @click="tabIndexChange(1)">
+        <span :class="tabIndex==1?'active':''">关注</span>
+      </div>
+      <div class="item" @click="tabIndexChange(2)">
+        <span :class="tabIndex==2?'active':''">推荐</span>
+      </div>
+    </div>
+    <div class="right">
+      <span class="iconfont icon-search"></span>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "topBar",
-  data(){
+  data() {
     return {
-      tabIndex: 2
-    }
+      tabIndex: 0
+    };
   },
   methods: {
-    tabIndexChange(index){
+    tabIndexChange(index) {
       this.tabIndex = index;
     }
   }
@@ -29,19 +37,20 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .topbar-wrap {
-    position: fixed;
-    top: 0%;
-    display: flex;
-    text-align: center;
-    width: 100%;
-    height: 50px;
-    line-height: 50px;
-    color: #8c8a8a;
-    background-color: #000;
-    .iconfont {
-      font-size: 22px;
-    }
+.topbar-wrap {
+  position: fixed;
+  top: 0%;
+  z-index: 99;
+  display: flex;
+  text-align: center;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  color: #8c8a8a;
+  // background-color: #000;
+  .iconfont {
+    font-size: 22px;
+  }
   .left {
     flex: 1;
   }
