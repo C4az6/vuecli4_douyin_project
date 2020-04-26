@@ -11,7 +11,7 @@
         <span :class="tabIndex==1?'active':''">关注</span>
       </div>
       <div class="item" @click="tabIndexChange(2)">
-        <span :class="tabIndex==2?'active':''">推荐</span>
+        <router-link to="/index/index" :class="tabIndex==2?'active':''">推荐</router-link>
       </div>
     </div>
     <div class="right">
@@ -25,7 +25,7 @@ export default {
   name: "topBar",
   data() {
     return {
-      tabIndex: 0
+      tabIndex: 2
     };
   },
   methods: {

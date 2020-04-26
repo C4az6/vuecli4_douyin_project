@@ -34,7 +34,7 @@ export default {
         notSupportedMessage: "此视频暂无法播放，请稍后再试", //允许覆盖Video.js无法播放媒体源时显示的默认信息。
         controlBar: false
       },
-      playing: false // 播放状态
+      playing: true // 播放状态
     };
   },
   components: {
@@ -60,11 +60,18 @@ export default {
       if(this.index===0) {
         this.playerOptions.autoplay = true
       }
+    },
+
+    play(){
+      this.$refs.videoPlayer.player.load();
+      this.$refs.videoPlayer.player.play();
+      this.playing = true;
+    },
+
+    stop(){
+      this.$refs.videoPlayer.player.pause();
+      this.playing = false;
     }
-/*     // 暂停其他视频，只播放当前视频
-    pauseOtherVideo(index){
-      
-    } */
   },
 };
 </script>

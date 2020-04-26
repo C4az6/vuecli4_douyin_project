@@ -2,9 +2,16 @@
   <div class="Videolist-wrap">
     <swiper :options="swiperOption">
       <!-- 幻灯内容 -->
-      <swiper-slide v-for="(item,index) in videoList" :key="index">
+      <swiper-slide
+        v-for="(item,index) in videoList"
+        :key="index"
+      >
         <div>
-          <videos ref="videos" :videoList="item" :index="index"></videos>
+          <videos
+            ref="videos"
+            :videoList="item"
+            :index="index"
+          ></videos>
         </div>
         <div class="infobar-wrap">
           <info-bar></info-bar>
@@ -37,18 +44,19 @@ export default {
         resistanceRatio: 0,
         observeParents: true,
         on: {
-          tap: ()=>{
+          tap: () => {
             this.playAction(this.page - 1);
           },
           // 下滑结束
-          slideNextTransitionStart: ()=>{
+          slideNextTransitionStart: () => {
             this.page += 1;
-            console.log(this.page);
+            this.nextVideo(this.page - 1);
           },
           // 上滑结束
-          slidePrevTransitionEnd: ()=>{
-            if(this.page>1) {
+          slidePrevTransitionEnd: () => {
+            if (this.page > 1) {
               this.page -= 1;
+              this.preVideo(this.page - 1);
               console.log(this.page);
             }
           }
@@ -76,8 +84,18 @@ export default {
       });
   },
   methods: {
-    playAction(index){
+    playAction(index) {
       this.$refs.videos[index].playOrStop()
+    },
+    // 滑动到下一个视频
+    nextVideo(index) {
+      this.$refs.videos[index - 1].stop();
+      this.$refs.videos[index].play();
+    },
+    // 滑动到上一个视频
+    preVideo(index) {
+      this.$refs.videos[index + 1].stop();
+      this.$refs.videos[index].play();
     }
   },
 };
@@ -91,7 +109,7 @@ export default {
 
 /deep/ .vjs-custom-skin > .video-js .vjs-big-play-button {
   font-size: 1.5em;
-/*   top: 50%;
+  /*   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%); */
 }
@@ -102,7 +120,4 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
-
-
 </style>
