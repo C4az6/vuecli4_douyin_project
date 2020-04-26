@@ -13,7 +13,7 @@
 import { videoPlayer } from "vue-video-player";
 export default {
   name: "videos",
-  props: ["videoList"],
+  props: ["videoList", "index"],
   data() {
     return {
       playerOptions: {
@@ -33,14 +33,39 @@ export default {
         width: document.documentElement.clientWidth,
         notSupportedMessage: "此视频暂无法播放，请稍后再试", //允许覆盖Video.js无法播放媒体源时显示的默认信息。
         controlBar: false
-      }
+      },
+      playing: false // 播放状态
     };
   },
   components: {
     videoPlayer
   },
-  mounted(){
-  }
+  created(){
+    this.autoPlayAction();
+  },
+  methods: {
+    // 点击播放或暂停视频
+    playOrStop(){
+      if(this.playing) {
+        this.$refs.videoPlayer.player.pause();
+        this.playing = false;
+      }else {
+        this.$refs.videoPlayer.player.play();
+        this.playing = true;
+      }
+    },
+
+    // 自动播放第一个视频
+    autoPlayAction(){
+      if(this.index===0) {
+        this.playerOptions.autoplay = true
+      }
+    }
+/*     // 暂停其他视频，只播放当前视频
+    pauseOtherVideo(index){
+      
+    } */
+  },
 };
 </script>
 

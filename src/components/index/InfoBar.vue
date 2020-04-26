@@ -9,7 +9,7 @@
     <div class="info-bar music">
       <span class="music-icon">🎶</span>
       <div class="desc">
-        <span data-text="努力学习,努力工作,努力自己成为更牛逼的人!">努力学习,努力工作,努力自己成为更牛逼的人!</span>
+        <span data-text="努力学习,努力工作,努力成为更牛逼的人!">努力学习,努力工作,努力成为更牛逼的人!</span>
       </div>
     </div>
   </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="topbar-wrap">
     <div class="left">
-      <span class="iconfont icon-live"></span>
+      <span class="iconfont icon-15"></span>
     </div>
     <div class="middle">
       <div class="item" @click="tabIndexChange(0)">

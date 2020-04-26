@@ -4,10 +4,11 @@
       <!-- 幻灯内容 -->
       <swiper-slide v-for="(item,index) in videoList" :key="index">
         <div>
-          <videos :videoList="item"></videos>
+          <videos ref="videos" :videoList="item" :index="index"></videos>
         </div>
         <div class="infobar-wrap">
           <info-bar></info-bar>
+          <right-bar></right-bar>
         </div>
       </swiper-slide>
     </swiper>
@@ -16,12 +17,14 @@
 
 <script>
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
-import infoBar from "./InfoBar";
+import InfoBar from "./InfoBar";
+import RightBar from './RightBar'
 import videos from "./Videos";
 export default {
   name: "videoList",
   data() {
     return {
+      page: 1,
       swiperOption: {
         direction: "vertical",
         grabCursor: true,
@@ -32,7 +35,24 @@ export default {
         mousewheelControl: true,
         height: window.innerHeight, // 高度设置，占满设备高度
         resistanceRatio: 0,
-        observeParents: true
+        observeParents: true,
+        on: {
+          tap: ()=>{
+            this.playAction(this.page - 1);
+          },
+          // 下滑结束
+          slideNextTransitionStart: ()=>{
+            this.page += 1;
+            console.log(this.page);
+          },
+          // 上滑结束
+          slidePrevTransitionEnd: ()=>{
+            if(this.page>1) {
+              this.page -= 1;
+              console.log(this.page);
+            }
+          }
+        }
       },
       videoList: []
     };
@@ -41,19 +61,25 @@ export default {
     Swiper,
     SwiperSlide,
     videos,
-    infoBar
+    InfoBar,
+    RightBar
   },
   mounted() {
     this.$axios
       .post("/api/SmallProgram/SerachVideoList", {
         pageIndex: 1,
-        pageSize: 10,
+        pageSize: 5,
         name: ""
       })
       .then(res => {
         this.videoList = res.data.ResultObject;
       });
-  }
+  },
+  methods: {
+    playAction(index){
+      this.$refs.videos[index].playOrStop()
+    }
+  },
 };
 </script>
 
@@ -64,9 +90,10 @@ export default {
 }
 
 /deep/ .vjs-custom-skin > .video-js .vjs-big-play-button {
-  top: 50%;
+  font-size: 1.5em;
+/*   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
 }
 
 /deep/ .video-js {
@@ -75,4 +102,7 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+
+
 </style>

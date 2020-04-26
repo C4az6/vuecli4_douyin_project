@@ -7,6 +7,7 @@ import './static/iconfont/iconfont.css'
 import 'swiper/css/swiper.css'
 import VueVideoPlayer from 'vue-video-player'
 import 'video.js/dist/video-js.css'
+import 'vue-video-player/src/custom-theme.css'
 import axios from 'axios'
 
 Vue.prototype.$axios = axios

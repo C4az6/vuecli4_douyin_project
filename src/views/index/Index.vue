@@ -8,7 +8,7 @@
 <script>
 import topBar from '../../components/index/TopBar'
 export default {
-  data(){
+  data() {
     return {
 
     }
@@ -23,5 +23,4 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  
 </style>
